@@ -1,0 +1,41 @@
+\documentclass[../main.tex]{subfiles}
+\usepackage{csquotes}
+\usepackage{fontspec}
+\setmonofont{FreeMono}
+\begin{document}
+
+\section{Lecture 2}
+%def Quasi-Projective Variety
+A \textbf{quasi-projective variety} is a subset of projective space that
+
+
+\begin{example}
+$\mathbb{A}^n$ is birational to $\mathbb{P}^n$ via the map
+\[(x_1, \ldots, x_n) \mapsto [1 : x_1 : \ldots : x_n]\]
+with inverse
+\[[x_0 : x_1 : \ldots : x_n] \mapsto \left(\frac{x_1}{x_0}, \ldots, \frac{x_n}{x_0}\right)\]
+(not defined when $x_0 = 0$).
+check these are rational inverses
+\end{example}
+\begin{lemma}
+  Two irreducible quasi-projective varieties $V,W$ are birational if and only if there are open subsets $A \subset V$ and $B \subset W$ such that $A$ and $B$ are isomorphic (as quasi-projectivevarieties).
+\end{lemma}
+\begin{proof}
+  Given $f: A \to B$ with inverse $g: B \to A$ isomorphisms, we can extend to rational maps $\varphi:V \dashrightarrow W$ and $\psi  : W \dashrightarrow V$ by defining them to be undefined outside of $A$ and $B$ respectively. These are clearly rational inverses.
+  Open nonempty subsets of irreducible varieties are dense, so these are indeed birational maps.
+  \[
+  A_1 := dom(\varphi)\subset V
+  \]
+  \[B_1 := dom(\psi) \subset W
+  \]
+  % --- converse ---
+  \[
+  A= \varphi^{-1}|_{A_1}(B_1) \subset A_1
+  \]
+  \[
+  B = \psi^{-1}|_{B_1}(A_1) \subset B_1
+  \]
+\end{proof}
+If $V$ be a quasi-projective variety, a \textbf{rational function} on $V$ is a rational map from $V$ to $\mathbb{A}^1$. The set of all rational functions on $V$ is denoted $K(V)$, called the \textbf{function field} of $V$.\\
+There is the same as a rational map $\phi: V \dashrightarrow \mathbb{P}^1$ 
+\end{document}

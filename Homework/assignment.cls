@@ -115,7 +115,7 @@
   \fancyhf{}
   % \fancyhead[L]{\includegraphics[width=0.2\textwidth]{figures/Imperial_College_London_new_logo}} % 左侧页眉
   % \fancyhead[C]{\textit{\TITLE\\\textit{\today}}}
-   \fancyhead[C]{\includegraphics[width=0.5\textwidth]{figures/Imperial_College_London_new_logo}}
+  \fancyhead[C]{\includegraphics[width=0.5\textwidth]{figures/Imperial_College_London_new_logo.png}} % 中间页眉
   % \fancyhead[R]{\includegraphics[width=0.2\textwidth]{figures/DUT Logo.png}} % 右侧
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{0.4pt}

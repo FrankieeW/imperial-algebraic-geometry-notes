@@ -1,0 +1,74 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+\section{segre embedding}
+\begin{lemma}[Lemma 12.2]
+  Let $\sigma_{m,n}: \mathbb{P}^m \times \mathbb{P}^n \to \Sigma_{m,n}$ be a bijection.
+\end{lemma}
+\begin{proof}
+  Let $N=(m+1)(n+1)-1$ and write points of $\mathbb{P}^N$ as
+  \(
+    z=[z_{ij}]_{0\le i\le m,\,0\le j\le n}.
+  \)
+  On $\Sigma_{m,n}$ we have the rank-$1$ relations
+  \[
+    z_{ij}z_{k\ell}=z_{i\ell}z_{kj}
+    \qquad
+    (0\le i,k\le m,\ 0\le j,\ell\le n).
+  \]
+  Fix $z\in\Sigma_{m,n}$ and choose $(a,b)$ with $z_{ab}\neq 0$. Define
+  \[
+    \pi_1(z):=[z_{0b}:\cdots:z_{mb}]\in\mathbb{P}^m,
+    \qquad
+    \pi_2(z):=[z_{a0}:\cdots:z_{an}]\in\mathbb{P}^n.
+  \]
+  These are well-defined up to projective scaling, and independent of the
+  choice of $(a,b)$: if $z_{a'b'}\neq 0$, the above relations imply
+  \([z_{0b}:\cdots:z_{mb}]=[z_{0b'}:\cdots:z_{mb'}]\)
+  and
+  \([z_{a0}:\cdots:z_{an}]=[z_{a'0}:\cdots:z_{a'n}]\).
+
+  Now compute, for any $r,s$,
+  \[
+    (\sigma_{m,n}(\pi_1(z),\pi_2(z)))_{rs}=z_{rb}z_{as}
+    =z_{rs}z_{ab},
+  \]
+  so in projective coordinates
+  \(
+    \sigma_{m,n}(\pi_1(z),\pi_2(z))=[z_{rs}z_{ab}]_{r,s}=[z_{rs}]_{r,s}=z.
+  \)
+  Hence
+  \(
+    \sigma_{m,n}\circ(\pi_1\times\pi_2)=\mathrm{id}_{\Sigma_{m,n}}.
+  \)
+
+  Conversely, let $([x],[y])\in\mathbb{P}^m\times\mathbb{P}^n$ and put
+  \(
+    z=\sigma_{m,n}([x],[y])=[x_i y_j]_{i,j}.
+  \)
+  Choose $a,b$ with $x_a\neq 0$ and $y_b\neq 0$. Then
+  \[
+    \pi_1(z)=[x_0y_b:\cdots:x_my_b]=[x_0:\cdots:x_m]=[x],
+  \]
+  \[
+    \pi_2(z)=[x_ay_0:\cdots:x_ay_n]=[y_0:\cdots:y_n]=[y].
+  \]
+  Therefore
+  \(
+    (\pi_1\times\pi_2)\circ\sigma_{m,n}=\mathrm{id}_{\mathbb{P}^m\times\mathbb{P}^n}.
+  \)
+  So $\pi_1\times\pi_2$ is the inverse of $\sigma_{m,n}$, and $\sigma_{m,n}$
+  is a bijection.
+\end{proof}
+\begin{lemma}
+Let $V \subset \mathbb{P}^m \times \mathbb{P}^n$, then $\sigma_{m,n}(V)$ is closed in $\Sigma_{m,n}$ if and only if \\
+\[
+V= \{[x_0 :\dots :x_m],[y_0:\dots:y_n] | f_i()=0 , \text{for } 1 \le i\le s \}
+\]
+where $f_i$ are bihomogeneous polynomials in $x_0, \ldots, x_m$ and $y_0, \ldots, y_n$.
+\end{lemma}
+\begin{proof}[proof(not part of the course)]
+\end{proof}
+
+
+\end{document}
