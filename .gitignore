@@ -9,6 +9,7 @@
 *.out
 *.run.xml
 *.synctex.gz
+*.xdv
 *.toc
 *.lof
 *.lot
@@ -18,6 +19,11 @@
 
 # Minted
 _minted-*/
+
+# Local LaTeX out directories: keep folder, ignore generated files
+Homework/**/out/*
+!Homework/**/out/.gitkeep
+!Homework/**/out/*.pdf
 
 # PDF (optional - uncomment to ignore)
 # *.pdf
