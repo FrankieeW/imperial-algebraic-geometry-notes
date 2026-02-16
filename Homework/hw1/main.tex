@@ -10,7 +10,7 @@
 
 \documentclass[
   12pt, % Default font size, values between 10pt-12pt are allowed
-]{../assignment}
+]{assignment}
 
 % Set table of contents depth to section level only (no subsection, subsubsection)
 \setcounter{tocdepth}{1}
@@ -41,6 +41,11 @@
 \usetikzlibrary{arrows,shapes.geometric,calc}
 
 \newcommand\nb{\addtocounter{equation}{1}\tag{\theequation}}
+\newcommand{\subqdash}{%
+  \par\vspace{0.8\baselineskip}%
+  \noindent\makebox[\linewidth][l]{\leaders\hbox{-}\hfill\kern0pt}%
+  \par\vspace{0.8\baselineskip}%
+}
 \pgfplotsset{compat=1.18}
 \renewcommand{\thesection}{Exercise \arabic{section}}
 
@@ -49,8 +54,8 @@
 %-------------------------------------------------------------------------------
 
 % Fix for fancyhdr warning: increase headheight and adjust topmargin
-\setlength{\headheight}{29.34845pt}
-\addtolength{\topmargin}{-17.34845pt}
+\setlength{\headheight}{29.35158pt}
+\addtolength{\topmargin}{-17.35158pt}
 
 \title{Assessed Coursework 1} % Assignment title
 \author{Frankie Feng-Cheng WANG} % Student name
@@ -91,7 +96,22 @@ As always, we let $k$ be an algebraically closed field. Some answers may depend 
 		      \begin{itemize}
 			      \item $z = -x^3, y = -x$: the curve $C_2 = V(y + x,\, z + x^3) = \{(t, -t, -t^3) : t \in k\}$.
 		      \end{itemize}
-		      Each component is irreducible: $k[x,y,z]/(x,y) \cong k[z]$, $k[x,y,z]/(y-x, z-x^3) \cong k[x]$, and $k[x,y,z]/(y+x, z+x^3) \cong k[x]$ are all integral domains. One checks that none is contained in the union of the others (e.g.\ $(0,0,1) \in V(x,y)$ but not in $C_1$ or $C_2$; $(1,1,1) \in C_1$ but not in $V(x,y)$ or $C_2$ when $\operatorname{char} k \neq 2$).
+			      Each component is irreducible:
+			      \[
+				      k[x,y,z]/(x,y) \cong k[z],\quad
+				      k[x,y,z]/(y-x, z-x^3) \cong k[x],\quad
+				      k[x,y,z]/(y+x, z+x^3) \cong k[x].
+			      \]
+			      These are integral domains.
+			      Also, none is contained in the union of the others.
+			      For example,
+			      \[
+				      (0,0,1) \in V(x,y),\qquad (0,0,1) \notin C_1\cup C_2.
+			      \]
+			      And when $\operatorname{char} k \neq 2$,
+			      \[
+				      (1,1,1) \in C_1,\qquad (1,1,1) \notin V(x,y)\cup C_2.
+			      \]
 
 		      If $\operatorname{char} k = 2$: then $y + x = y - x$, so $C_1 = C_2$ and
 		      \[
@@ -103,18 +123,28 @@ As always, we let $k$ be an algebraically closed field. Some answers may depend 
 			      \]
 			      We are using explicitly:
 			      \[
-				      \text{\emph{lecturenotes}, Section 2.1: } V(S)=\{x\in\mathbb{A}^n_k: f(x)=0\ \forall f\in S\},
+				      \text{[Definition, \S 2.1, p.3, Algebraic Geometry, 2026]: } V(S)=\{x\in\mathbb{A}^n_k: f(x)=0\ \forall f\in S\},
 			      \]
 			      and
 			      \[
-				      \text{\emph{lecturenotes}, Lemma 2.1: } V(I)\cup V(J)=V(IJ).
+				      \text{[Lemma 2.1, \S 2.2, p.4, Algebraic Geometry, 2026]: } V(I)\cup V(J)=V(IJ).
 			      \]
 			      Hence each piece above is an affine subvariety (a zero-locus), and their finite union is again Zariski closed.
+
+			      \subqdash{}
 
 		      \textbf{$V(f,h)$:}\quad
 		      On $V(y-x)$: $h = z^2 - x^4 = (z - x^2)(z + x^2)$, giving components $V(y-x, z-x^2)$ and $V(y-x, z+x^2)$.
 
-		      On $V(y+x)$: $h = z^2 + x^4$. Since $k$ is algebraically closed, choose $i \in k$ with $i^2 = -1$. Then $z^2 + x^4 = (z - ix^2)(z + ix^2)$, giving components $V(y+x, z-ix^2)$ and $V(y+x, z+ix^2)$.
+			      On $V(y+x)$:
+			      \[
+				      h = z^2 + x^4.
+			      \]
+			      Since $k$ is algebraically closed, choose $i \in k$ with $i^2 = -1$. Then
+			      \[
+				      z^2 + x^4 = (z - ix^2)(z + ix^2),
+			      \]
+			      giving components $V(y+x, z-ix^2)$ and $V(y+x, z+ix^2)$.
 
 		      Each quotient $k[x,y,z]/(y \pm x, z - \alpha x^2) \cong k[x]$ is a domain, so each component is irreducible.
 
@@ -127,6 +157,8 @@ As always, we let $k$ be an algebraically closed field. Some answers may depend 
 			      V(f,h) = V(y-x, z-x^2) \cup V(y-x, z+x^2) \cup V(y+x, z-ix^2) \cup V(y+x, z+ix^2).
 		      \]
 
+			      \subqdash{}
+
 		      \textbf{$V(f,g,h)$:}\quad
 		      We intersect the components of $V(f,g)$ with the condition $h = 0$.
 
@@ -134,13 +166,21 @@ As always, we let $k$ be an algebraically closed field. Some answers may depend 
 
 		      On $C_1 = \{(t,t,t^3)\}$: $h = t^6 - t^4 = t^4(t^2 - 1) = 0$, so $t = 0$ or $t = \pm 1$. Points: $(0,0,0)$, $(1,1,1)$, $(-1,-1,-1)$.
 
-		      On $C_2 = \{(t,-t,-t^3)\}$ (when $\operatorname{char} k \neq 2$): $h = t^6 + t^4 = t^4(t^2 + 1) = 0$, so $t = 0$ or $t = \pm i$. Points: $(0,0,0)$, $(i, -i, i)$, $(-i, i, -i)$.
+			      On $C_2 = \{(t,-t,-t^3)\}$ (when $\operatorname{char} k \neq 2$):
+			      \[
+				      h = t^6 + t^4 = t^4(t^2 + 1)=0,
+			      \]
+			      so $t=0$ or $t=\pm i$.
+			      Hence the points are
+			      \[
+				      (0,0,0),\ (i, -i, i),\ (-i, i, -i).
+			      \]
 
 		      If $\operatorname{char} k \neq 2$: $V(f,g,h)$ consists of five points,
 		      \[
 			      V(f,g,h) = \{(0,0,0),\ (1,1,1),\ (-1,-1,-1),\ (i,-i,i),\ (-i,i,-i)\}.
 		      \]
-		      If $\operatorname{char} k = 2$: $t^2 - 1 = (t+1)^2$, so $t = 0$ or $t = 1$, giving
+		      If $\operatorname{char} k = 2$: $t^2 - 1 = {(t+1)}^2$, so $t = 0$ or $t = 1$, giving
 		      \[
 			      V(f,g,h) = \{(0,0,0),\ (1,1,1)\}.
 		      \]
@@ -149,16 +189,38 @@ As always, we let $k$ be an algebraically closed field. Some answers may depend 
 
 	\item Let $f, g \in k[x,y]$ be two irreducible polynomials which are not multiples of each other.
 	      \begin{enumerate}
-		      \item Suppose that at least one of $f$ and $g$ contains a nonzero term in $y$ (i.e.\ is not an element of $k[x]$). Use Gauss's Lemma to show that $f, g$ have no common factors in the ring $k(x)[y]$.
+			      \item Suppose that at least one of $f$ and $g$ contains a nonzero term in $y$
+			            (i.e.\ is not an element of $k[x]$).
+			            Use Gauss's Lemma to show that $f, g$ have no common factors in $k(x)[y]$.
 		            \begin{solution}
 			            View $f, g$ as elements of $R[y]$ where $R = k[x]$ is a UFD with fraction field $K = k(x)$.
 
-			            Suppose first that $f$ involves $y$, i.e.\ $\deg_y f \geq 1$. Then $f$ is primitive as an element of $R[y]$: if a non-unit $c(x) \in R$ divided every coefficient of $f$ (viewed in $y$), then $f = c(x) \cdot \tilde{f}(x,y)$ with $\tilde{f}$ involving $y$, contradicting the irreducibility of $f$ in $k[x,y]$. Since $f$ is primitive and irreducible in $R[y]$, by Gauss's Lemma $f$ is irreducible in $K[y]$.
+				            Suppose first that $f$ involves $y$, i.e.\ $\deg_y f \geq 1$.
+				            Then $f$ is primitive in $R[y]$:
+				            if a non-unit $c(x)\in R$ divided every coefficient of $f$ (viewed in $y$),
+				            then
+				            \[
+					            f = c(x)\,\tilde f(x,y),
+				            \]
+				            with $\tilde f$ still involving $y$, contradicting irreducibility of $f$ in $k[x,y]$.
+				            Hence, by Gauss's Lemma, $f$ is irreducible in $K[y]$.
 
-			            If $g$ also involves $y$, the same argument shows $g$ is irreducible in $K[y]$. Since $f$ and $g$ are not multiples of each other in $k[x,y]$, they are not associates in $K[y]$: if $f = (a/b) g$ for $a, b \in R \setminus \{0\}$, then $bf = ag$; since $f$ is irreducible in $R[y]$ with $\deg_y f \geq 1$, no non-unit $a \in R$ divides $f$, so $a$ is a unit; similarly $b$ is a unit, making $f$ and $g$ scalar multiples in $k[x,y]$, a contradiction. Thus $f$ and $g$ are distinct irreducibles in the PID $K[y]$, hence coprime.
+				            If $g$ also involves $y$, the same argument shows $g$ is irreducible in $K[y]$.
+				            Since $f$ and $g$ are not multiples in $k[x,y]$, they are not associates in $K[y]$.
+				            Indeed, if
+				            \[
+					            f = (a/b)\,g,\qquad a,b\in R\setminus\{0\},
+				            \]
+				            then $bf=ag$.
+				            Since $f$ is irreducible in $R[y]$ with $\deg_y f\ge 1$, no non-unit $a\in R$ divides $f$.
+				            So $a$ is a unit; similarly $b$ is a unit.
+				            This would force $f,g$ to be scalar multiples in $k[x,y]$, contradiction.
+				            Thus $f,g$ are distinct irreducibles in the PID $K[y]$, hence coprime.
 
 			            If $g \in k[x]$: then $g$ is a nonzero element of $R \subset K$, hence a unit in $K[y]$. So $\gcd(f, g) = 1$ trivially.
-		            \end{solution}
+			            \end{solution}
+
+			      \subqdash{}
 
 		      \item Show that there exist nonzero polynomials $h \in k[x]$ and $p, q \in k[x,y]$ such that $h = fp + gq$.
 		            \begin{solution}
@@ -166,12 +228,19 @@ As always, we let $k$ be an algebraically closed field. Some answers may depend 
 			            \[
 				            1 = fP + gQ.
 			            \]
-			            Write $P = p_0/d_1$ and $Q = q_0/d_2$ where $p_0, q_0 \in k[x,y]$ and $d_1, d_2 \in k[x] \setminus \{0\}$. Multiplying through by $d_1 d_2$:
+				            Write
+				            \[
+					            P = p_0/d_1,\qquad Q = q_0/d_2,
+				            \]
+				            where $p_0,q_0\in k[x,y]$ and $d_1,d_2\in k[x]\setminus\{0\}$.
+				            Multiplying through by $d_1d_2$:
 			            \[
 				            d_1 d_2 = f(d_2 p_0) + g(d_1 q_0).
 			            \]
 			            Setting $h = d_1 d_2 \in k[x] \setminus \{0\}$, $p = d_2 p_0$, $q = d_1 q_0$ gives the result.
 		            \end{solution}
+
+			      \subqdash{}
 
 		      \item Show that the set $\{x : (x,y) \in V(f,g)\}$ of first coordinates of points of $V(f,g)$ is finite.
 		            \begin{solution}
@@ -184,22 +253,49 @@ As always, we let $k$ be an algebraically closed field. Some answers may depend 
 			            Since $h \in k[x]$ is nonzero, it has at most $\deg h$ roots. Therefore the set of first coordinates is finite.
 		            \end{solution}
 
+			      \subqdash{}
+
 		      \item Show that the set $V(f,g)$ is finite.
 		            \begin{solution}
-			            By part (c), the set of first coordinates $A = \{a \in k : (a, b) \in V(f,g) \text{ for some } b\}$ is finite. For each $a \in A$, the fiber $\{b \in k : (a, b) \in V(f, g)\} \subseteq \{b \in k : f(a, b) = 0\}$.
+				            By part (c), the set
+				            \[
+					            A=\{a\in k : (a,b)\in V(f,g)\text{ for some }b\}
+				            \]
+				            is finite.
+				            For each $a\in A$, the fiber
+				            \[
+					            \{b\in k : (a,b)\in V(f,g)\}
+				            \]
+				            is contained in
+				            \[
+					            \{b\in k : f(a,b)=0\}.
+				            \]
 
-			            Since at least one of $f, g$ involves $y$, say $f$. Write $f = \sum_j c_j(x) y^j$ with $c_m \neq 0$ for some $m \geq 1$. If $f(a, y) \equiv 0$ as a polynomial in $y$, then $c_j(a) = 0$ for all $j$, so $(x - a)$ divides every $c_j(x)$, hence $(x - a) \mid f$ in $k[x,y]$. But $f$ is irreducible with $\deg_y f \geq 1$, a contradiction. Therefore $f(a, y)$ is a nonzero polynomial in $y$ for every $a$, so the fiber above each $a$ is finite.
+				            Since at least one of $f,g$ involves $y$, say $f$, write
+				            \[
+					            f=\sum_j c_j(x)y^j,\qquad c_m\neq 0,\ m\ge 1.
+				            \]
+				            If $f(a,y)\equiv 0$ as a polynomial in $y$, then $c_j(a)=0$ for all $j$.
+				            So $(x-a)$ divides every $c_j(x)$, hence $(x-a)\mid f$ in $k[x,y]$.
+				            But $f$ is irreducible with $\deg_y f\ge 1$, contradiction.
+				            Therefore $f(a,y)$ is nonzero for every $a$, so each fiber is finite.
 
 			            A finite union of finite sets is finite, so $V(f, g)$ is finite.
 		            \end{solution}
 	      \end{enumerate}
 
-	\item Let $n, m \geq 1$ be integers and consider the regular map $\varphi \colon \mathbb{A}^1 \to \mathbb{A}^2$ which sends $t \mapsto (t^n, t^m)$. Show that the image of $\varphi$ is an affine subvariety of $\mathbb{A}^2$. Give the condition for which $\varphi$ is bijective to its image, and, in this case, give a birational inverse to $\varphi$ when $k$ has characteristic zero.
+		\item Let $n,m\ge 1$ and consider
+		      \[
+			      \varphi:\mathbb{A}^1\to\mathbb{A}^2,\qquad t\mapsto (t^n,t^m).
+		      \]
+		      Show that $\operatorname{im}(\varphi)$ is an affine subvariety of $\mathbb{A}^2$.
+		      Give the condition for which $\varphi$ is bijective onto its image.
+		      In that case, give a birational inverse when $\operatorname{char}k=0$.
 	      \begin{solution}
 		      Let $d = \gcd(n, m)$, $a = n/d$, $b = m/d$, so $\gcd(a, b) = 1$.
 
 			      \textbf{Image is a subvariety:}\quad
-			      By \emph{lecturenotes}, Section 2.1 (Definition of affine subvarieties),
+			      By [Definition, \S 2.1, p.3, Algebraic Geometry, 2026],
 			      \[
 				      \text{it is enough to prove } \operatorname{im}(\varphi)=V(S)\text{ for some }S\subset k[x,y].
 			      \]
@@ -214,38 +310,70 @@ As always, we let $k$ be an algebraically closed field. Some answers may depend 
 
 		      If $(x, y) = (s^a, s^b)$, then $x^b - y^a = s^{ab} - s^{ab} = 0$, so $\operatorname{im}(\varphi) \subseteq V(x^b - y^a)$.
 
-			      Conversely, let $(x, y) \in V(x^b - y^a)$. If $x = 0$ then $y^a = 0$ so $y = 0 = (0^a, 0^b) \in \operatorname{im}(\varphi)$. If $x \neq 0$, choose $s_0 \in k$ with $s_0^a = x$ (possible since $k$ is algebraically closed). Then $s_0^{ab} = x^b = y^a$, so
+			      Conversely, let $(x, y) \in V(x^b - y^a)$.
+			      If $x = 0$, then $y^a = 0$, so $y = 0 = (0^a,0^b)\in \operatorname{im}(\varphi)$.
+			      If $x\neq 0$, choose $s_0\in k$ with $s_0^a=x$.
+			      Then $s_0^{ab}=x^b=y^a$, so
 			      \[
-				      \left(\frac{y}{s_0^b}\right)^a = 1.
+				      {\left(\frac{y}{s_0^b}\right)}^a = 1.
 			      \]
-			      Let $\zeta := y/s_0^b \in \mu_a$. Since $\gcd(a,b)=1$, the map $\mu_a \to \mu_a$, $\eta \mapsto \eta^b$, is bijective. Hence there exists $\eta \in \mu_a$ with $\eta^b = \zeta$. Set $s := \eta s_0$. Then
+			      Let $\zeta := y/s_0^b \in \mu_a$.
+			      Since $\gcd(a,b)=1$, the map
+			      \[
+				      \mu_a\to\mu_a,\qquad \eta\mapsto\eta^b
+			      \]
+			      is bijective.
+			      Hence there exists $\eta\in\mu_a$ with $\eta^b=\zeta$.
+			      Set $s:=\eta s_0$. Then
 			      \[
 				      s^a = \eta^a s_0^a = x,\qquad s^b = \eta^b s_0^b = \zeta s_0^b = y.
 			      \]
 			      Thus $(x, y) = (s^a, s^b) \in \operatorname{im}(\varphi)$.
 
-		      The polynomial $x^b - y^a$ is irreducible: the map $k[x,y] \to k[t]$ sending $x \mapsto t^a$, $y \mapsto t^b$ has image $k[t^a, t^b]$. The monomials $\{x^i y^j : i \geq 0,\, 0 \leq j \leq a-1\}$ map to $\{t^{ia + jb}\}$, which are all distinct (since $\gcd(a,b) = 1$). So $k[x,y]/(x^b - y^a) \hookrightarrow k[t]$ is an integral domain, hence $x^b - y^a$ is irreducible.
+			      The polynomial $x^b-y^a$ is irreducible.
+			      Consider
+			      \[
+				      k[x,y]\to k[t],\qquad x\mapsto t^a,\ y\mapsto t^b.
+			      \]
+			      Its image is $k[t^a,t^b]$.
+				      The monomials $\{x^{i}y^{j}: i\geq 0,\ 0\leq j\leq a-1\}$ map to $\{t^{ia+jb}\}$,
+			      and these exponents are distinct since $\gcd(a,b)=1$.
+			      Hence
+			      \[
+				      k[x,y]/(x^b-y^a)\hookrightarrow k[t]
+			      \]
+			      is a domain, so $x^b-y^a$ is irreducible.
 
 			      Therefore
-			      \[
-				      \operatorname{im}(\varphi) = V(x^b-y^a),
-			      \]
-			      so the image is an affine subvariety in the sense of Section 2.1 of \emph{lecturenotes}.
+				      \[
+					      \operatorname{im}(\varphi) = V(x^b-y^a),
+				      \]
+				      so the image is an affine subvariety in the sense of [Definition, \S 2.1, p.3, Algebraic Geometry, 2026].
 
-		      \textbf{Bijectivity:}\quad
-		      $\varphi$ is bijective onto its image iff $t^n = s^n$ and $t^m = s^m$ implies $t = s$. For $t, s \neq 0$, set $\omega = s/t$; then $\omega^n = \omega^m = 1$, so $\omega^d = 1$. We need the only such $\omega$ to be $1$.
+			      \textbf{Bijectivity:}\quad
+			      $\varphi$ is bijective onto its image iff
+			      \[
+				      t^n=s^n\ \text{and}\ t^m=s^m \ \Longrightarrow\ t=s.
+			      \]
+			      For $t,s\neq 0$, set $\omega=s/t$.
+			      Then
+			      \[
+				      \omega^n=\omega^m=1 \Longrightarrow \omega^d=1.
+			      \]
+			      So we need the only such $\omega$ to be $1$.
 
 		      In characteristic zero, $\mu_d(k) = \{1\}$ iff $d = 1$. So $\varphi$ is bijective to its image if and only if $\gcd(n, m) = 1$.
 
-		      (In characteristic $p > 0$, $\varphi$ is bijective iff $\gcd(n, m)$ is a power of $p$, since the only $p^e$-th root of unity in $k$ is $1$.)
+			      In characteristic $p>0$, $\varphi$ is bijective iff $\gcd(n,m)$ is a power of $p$,
+			      since the only $p^e$-th root of unity in $k$ is $1$.
 
 			      \textbf{Birational inverse (char $0$, $\gcd(n,m) = 1$):}\quad
-			      Here we invoke two specific Lecture 2 facts from \emph{lecturenotes}:
+			      Here we invoke the Chapter 7 framework:
 			      \[
-				      \text{(i) ``rational function on }V\text{'' and function field }K(V),
+				      \text{[Definition, \S 7, p.22, Algebraic Geometry, 2026]: rational maps/functions and }k(V),
 			      \]
 			      \[
-				      \text{(ii) birationality is equivalence via inverse rational maps (Lecture 2 lemma).}
+				      \text{[Definition, \S 7, p.25, Algebraic Geometry, 2026]: birational equivalence via rational inverses.}
 			      \]
 			      By B\'{e}zout, choose $\alpha, \beta \in \mathbb{Z}$ with $\alpha n + \beta m = 1$. Define the rational map
 			      \[
@@ -253,7 +381,7 @@ As always, we let $k$ be an algebraically closed field. Some answers may depend 
 			      \]
 		      (where negative exponents denote division). Then
 		      \[
-			      \psi(\varphi(t)) = (t^n)^\alpha (t^m)^\beta = t^{\alpha n + \beta m} = t,
+			      \psi(\varphi(t)) = {(t^n)}^\alpha {(t^m)}^\beta = t^{\alpha n + \beta m} = t,
 		      \]
 			      On the dense open subset where $x \neq 0$ and $y \neq 0$, this is a composition of regular functions. In function fields,
 			      \[
@@ -263,7 +391,7 @@ As always, we let $k$ be an algebraically closed field. Some answers may depend 
 			      \]
 			      so
 			      \[
-				      (\varphi^* \circ \psi^*)(t) = (t^n)^\alpha (t^m)^\beta = t^{\alpha n + \beta m} = t.
+				      (\varphi^* \circ \psi^*)(t) = {(t^n)}^\alpha {(t^m)}^\beta = t^{\alpha n + \beta m} = t.
 			      \]
 			      Also
 			      \[
@@ -273,13 +401,14 @@ As always, we let $k$ be an algebraically closed field. Some answers may depend 
 			      \[
 				      \psi^* \circ \varphi^*=\mathrm{id}_{k(V(x^m-y^n))}.
 			      \]
-			      Hence $\psi$ and $\varphi$ are inverse as rational maps (Lecture 2 birational criterion).
-			      So $\psi$ is a birational inverse of $\varphi$.
+				      Hence $\psi$ and $\varphi$ are inverse as rational maps ([Definition, \S 7, p.25, Algebraic Geometry, 2026]).
+				      So $\psi$ is a birational inverse of $\varphi$.
 		      \end{solution}
 
 	\item
 	      \begin{enumerate}
-		      \item Let $S = V(x^2 + y^2 - 1)$ be the circle and $H = V(wz - 1)$ be the hyperbola. Show that either $S \cong H$ or $S \cong \mathbb{A}^1$.
+			      \item Let $S=V(x^2+y^2-1)$ be the circle and $H=V(wz-1)$ be the hyperbola.
+			            Show that either $S\cong H$ or $S\cong\mathbb{A}^1$.
 		            \begin{solution}
 			            \textbf{Case $\operatorname{char} k \neq 2$:}\quad
 			            Since $k$ is algebraically closed, choose $i \in k$ with $i^2 = -1$. Define
@@ -290,24 +419,59 @@ As always, we let $k$ be an algebraically closed field. Some answers may depend 
 			            \[
 				            \Phi^{-1} \colon H \to S, \qquad (w, z) \mapsto \left(\frac{w + z}{2},\, \frac{w - z}{2i}\right),
 			            \]
-			            which is well-defined since $\operatorname{char} k \neq 2$. One verifies $\Phi^{-1} \circ \Phi = \mathrm{id}_S$ and $\Phi \circ \Phi^{-1} = \mathrm{id}_H$. Both maps are morphisms (polynomial maps), so $S \cong H$.
+				            which is well-defined since $\operatorname{char} k \neq 2$.
+				            One verifies
+				            \[
+					            \Phi^{-1}\circ\Phi=\mathrm{id}_S,\qquad
+					            \Phi\circ\Phi^{-1}=\mathrm{id}_H.
+				            \]
+				            Both maps are morphisms, so $S \cong H$.
 
 			            \textbf{Case $\operatorname{char} k = 2$:}\quad
-			            In characteristic $2$, $x^2 + y^2 - 1 = (x + y)^2 + 1 = (x + y + 1)^2$ (since $(x+y+1)^2 = x^2 + y^2 + 1$ in char $2$, and $-1 = 1$). Therefore
+				            In characteristic $2$,
+				            \[
+					            x^2+y^2-1={(x+y)}^2+1={(x+y+1)}^2,
+				            \]
+				            since ${(x+y+1)}^2=x^2+y^2+1$ and $-1=1$.
+				            Therefore
 			            \[
-				            S = V((x + y + 1)^2) = V(x + y + 1),
+				            S = V({(x + y + 1)}^2) = V(x + y + 1),
 			            \]
-			            which is a line in $\mathbb{A}^2$. The map $t \mapsto (t,\, t + 1)$ is an isomorphism $\mathbb{A}^1 \xrightarrow{\sim} S$ with inverse $(x, y) \mapsto x$. So $S \cong \mathbb{A}^1$.
-		            \end{solution}
+				            which is a line in $\mathbb{A}^2$.
+				            The map
+				            \[
+					            t\mapsto (t,t+1)
+				            \]
+				            is an isomorphism $\mathbb{A}^1\xrightarrow{\sim}S$ with inverse $(x,y)\mapsto x$.
+				            So $S\cong\mathbb{A}^1$.
+			            \end{solution}
 
-		      \item Let $k$ have characteristic $p$. Show that the map $\varphi \colon \mathbb{A}^1 \to \mathbb{A}^1$ defined by $t \mapsto t^p$ is a bijection. Show that $\varphi$ is not a birational equivalence.
-		            \begin{solution}
-			            \textbf{Bijection:}\quad
-			            \emph{Surjectivity}: For any $a \in k$, the polynomial $t^p - a$ has a root in $k$ since $k$ is algebraically closed.
-			            \emph{Injectivity}: If $s^p = t^p$, then $(s - t)^p = s^p - t^p = 0$ (using the Frobenius endomorphism: all binomial coefficients $\binom{p}{i}$ for $0 < i < p$ are divisible by $p$, hence zero in characteristic $p$). So $s = t$.
+			      \subqdash{}
+
+			      \item Let $k$ have characteristic $p$.
+			            Show that
+			            \[
+				            \varphi:\mathbb{A}^1\to\mathbb{A}^1,\qquad t\mapsto t^p
+			            \]
+			            is a bijection, and show that $\varphi$ is not a birational equivalence.
+			            \begin{solution}
+				            \textbf{Bijection:}
+
+				            \emph{Surjectivity:}
+				            For any $a\in k$, the polynomial $t^p-a$ has a root in $k$,
+				            since $k$ is algebraically closed.
+
+				            \emph{Injectivity:}
+				            If $s^p=t^p$, then
+				            \[
+					            {(s-t)}^p=s^p-t^p=0,
+				            \]
+				            because $\binom{p}{i}=0$ in characteristic $p$ for $0<i<p$.
+				            Hence $s=t$.
 
 			      \textbf{Not a birational equivalence:}\quad
-			      By Lecture 2 in \emph{lecturenotes}, birational equivalence implies an isomorphism of function fields.
+			      By [Corollary 7.3, \S 7, p.26, Algebraic Geometry, 2026],
+			      irreducible affine varieties are birational iff their function fields are $k$-isomorphic.
 			      Here
 			      \[
 				      \varphi^* \colon k(t)\to k(t),\qquad f(t)\mapsto f(t^p),
@@ -332,33 +496,75 @@ As always, we let $k$ be an algebraically closed field. Some answers may depend 
 	      \begin{enumerate}
 		      \item Prove that $C$ is irreducible.
 		            \begin{solution}
-			            View $F = y^2 - x^3 - x$ as an element of $k[x][y]$. If $F$ were reducible in $k[x,y]$, then since $\deg_y F = 2$, it would factor as
+				            View $F=y^2-x^3-x$ as an element of $k[x][y]$.
+				            If $F$ were reducible in $k[x,y]$, then since $\deg_y F=2$, it would factor as
 			            \[
 				            F = (y - p(x))(y - q(x))
 			            \]
-			            for some $p, q \in k[x]$, giving $p + q = 0$ and $pq = -(x^3 + x)$. Thus $q = -p$ and $p^2 = x^3 + x$. But $\deg(p^2) = 2\deg p$ is even while $\deg(x^3 + x) = 3$ is odd, a contradiction. Therefore $F$ is irreducible.
-		            \end{solution}
+				            for some $p,q\in k[x]$, giving
+				            \[
+					            p+q=0,\qquad pq=-(x^3+x).
+				            \]
+				            Thus $q=-p$ and $p^2=x^3+x$.
+				            But $\deg(p^2)=2\deg p$ is even, while $\deg(x^3+x)=3$ is odd.
+				            Contradiction. Therefore $F$ is irreducible.
+			            \end{solution}
 
-		      \item Find the domain of definition of the rational map $\varphi \colon C \dashrightarrow \mathbb{A}^1$ given by $\varphi(x, y) = x/y$.
-		            \begin{solution}
+			      \subqdash{}
+
+		      \item Find the domain of definition of the rational map
+		            \[
+			            \varphi \colon C \dashrightarrow \mathbb{A}^1,\qquad \varphi(x,y)=x/y.
+		            \]
+			            \begin{solution}
 			            On $C$, $y^2 = x^3 + x = x(x^2 + 1)$, so
 			            \[
 				            \frac{x}{y} = \frac{x}{y} \cdot \frac{y}{y} = \frac{xy}{y^2} = \frac{xy}{x(x^2 + 1)} = \frac{y}{x^2 + 1}.
 			            \]
-			            The representation $x/y$ is regular where $y \neq 0$; the representation $y/(x^2 + 1)$ is regular where $x^2 + 1 \neq 0$. Together, $\varphi$ is regular on $C \setminus V(y,\, x^2 + 1)$.
+				            The representation $x/y$ is regular where $y\neq 0$.
+				            The representation $y/(x^2+1)$ is regular where $x^2+1\neq 0$.
+				            Together, $\varphi$ is regular on
+				            \[
+					            C\setminus V(y,x^2+1).
+				            \]
 
-			            At a point $P \in C$ with $y(P) = 0$ and $x(P)^2 + 1 = 0$: we have $x(P)^2 = -1$, $y(P) = 0$, and locally $y^2 = x(x^2+1)$ has a simple zero in $(x - x(P))$ at such $P$. Setting $u = x - x(P)$, we get $y^2 \sim x(P) \cdot u \cdot (\text{unit})$, so $y \sim \sqrt{u}$, and $\varphi = y/(x^2 + 1) \sim \sqrt{u}/u \to \infty$. Thus $\varphi$ has a pole at $P$ and cannot be extended.
+				            At a point $P\in C$ with $y{(P)}=0$ and ${x(P)}^2+1=0$:
+				            \[
+					            {x(P)}^2=-1,\qquad y{(P)}=0.
+				            \]
+				            Locally, $y^2=x(x^2+1)$ has a simple zero in $(x-x(P))$ at such $P$.
+				            Set $u=x-x(P)$.
+				            Then
+				            \[
+					            y^2\sim x(P)\cdot u\cdot(\text{unit}),
+				            \]
+				            so $y\sim \sqrt{u}$.
+				            Hence
+				            \[
+					            \varphi=\frac{y}{x^2+1}\sim \frac{\sqrt{u}}{u}\to\infty.
+				            \]
+				            So $\varphi$ has a pole at $P$ and cannot be extended.
 
 			            Therefore the domain of definition is $C \setminus V(y,\, x^2 + 1)$.
 
-			            Explicitly: the excluded points are those with $x^2 = -1$ and $y = 0$, which are $(i, 0)$ and $(-i, 0)$ when $\operatorname{char} k \neq 2$, and $(1, 0)$ when $\operatorname{char} k = 2$.
-		            \end{solution}
+				            Explicitly, the excluded points satisfy $x^2=-1$ and $y=0$:
+				            \[
+					            (i,0),\ (-i,0)\ \text{if }\operatorname{char}k\neq 2;\qquad (1,0)\ \text{if }\operatorname{char}k=2.
+				            \]
+			            \end{solution}
 
-		      \item Now consider the cubic curve $C' := V(y^2 - x^3 - x^2) \subseteq \mathbb{A}^2$. The same formula defines a rational map $\varphi \colon C' \dashrightarrow \mathbb{A}^1$. Find a dominant rational map $\psi \colon \mathbb{A}^1 \dashrightarrow C'$ with $\varphi \psi = \mathrm{id}_{\mathbb{A}^1}$.
-		            \begin{solution}
+			      \subqdash{}
+
+			      \item Now consider $C' := V(y^2 - x^3 - x^2)\subseteq\mathbb{A}^2$.
+			            The same formula defines a rational map $\varphi:C'\dashrightarrow\mathbb{A}^1$.
+			            Find a dominant rational map $\psi:\mathbb{A}^1\dashrightarrow C'$ with
+			            \[
+				            \varphi\psi=\mathrm{id}_{\mathbb{A}^1}.
+			            \]
+			            \begin{solution}
 			            We seek $\psi(t) = (a(t), b(t)) \in C'$ with $\varphi(\psi(t)) = a/b = t$, i.e.\ $a = tb$.
 
-			            Substituting into $b^2 = a^3 + a^2 = (tb)^3 + (tb)^2$:
+			            Substituting into $b^2 = a^3 + a^2 = {(tb)}^3 + {(tb)}^2$:
 			            \[
 				            b^2 = t^3 b^3 + t^2 b^2, \qquad b^2(1 - t^2) = t^3 b^3, \qquad b = \frac{1 - t^2}{t^3},
 			            \]
@@ -369,11 +575,24 @@ As always, we let $k$ be an algebraically closed field. Some answers may depend 
 				            \psi \colon \mathbb{A}^1 \dashrightarrow C', \qquad t \mapsto \left(\frac{1 - t^2}{t^2},\, \frac{1 - t^2}{t^3}\right).
 			            \]
 
-			            \emph{Verification}: $\varphi(\psi(t)) = \dfrac{(1-t^2)/t^2}{(1-t^2)/t^3} = t$. \checkmark
+				            \emph{Verification}: $\varphi(\psi(t)) = \dfrac{(1-t^2)/t^2}{(1-t^2)/t^3} = t$.\,\checkmark{}
+				            $\psi(t)\in C'$:
+				            \begin{align*}
+					            y^2-x^3-x^2
+					            &= \frac{{(1-t^2)}^2}{t^6}
+					            - \frac{{(1-t^2)}^3}{t^6}
+					            - \frac{{(1-t^2)}^2}{t^4} \\
+					            &= \frac{{(1-t^2)}^2\bigl(1-(1-t^2)-t^2\bigr)}{t^6} \\
+					            &= 0.
+				            \end{align*}
+				            \checkmark{}
 
-			            $\psi(t) \in C'$: $y^2 - x^3 - x^2 = \dfrac{(1-t^2)^2}{t^6} - \dfrac{(1-t^2)^3}{t^6} - \dfrac{(1-t^2)^2}{t^4} = \dfrac{(1-t^2)^2[(1) - (1-t^2) - t^2]}{t^6} = 0$. \checkmark
 
-			            \emph{Dominance}: $\psi$ is defined for $t \neq 0$, and every $(x, y) \in C'$ with $y \neq 0$ is in the image (set $t = x/y$ and recover $\psi(t) = (x, y)$ on $C'$). Since $C' \setminus V(y)$ is dense in the irreducible curve $C'$, $\psi$ is dominant.
+				            \emph{Dominance:}
+				            $\psi$ is defined for $t\neq 0$.
+				            Every $(x,y)\in C'$ with $y\neq 0$ is in the image:
+				            set $t=x/y$, then recover $\psi(t)=(x,y)$ on $C'$.
+				            Since $C'\setminus V(y)$ is dense in irreducible $C'$, $\psi$ is dominant.
 		            \end{solution}
 	      \end{enumerate}
 \end{enumerate}

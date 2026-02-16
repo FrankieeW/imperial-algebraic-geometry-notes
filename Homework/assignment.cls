@@ -210,7 +210,9 @@
 \RequirePackage{algpseudocode}
 \RequirePackage[final]{listings}
 % \RequirePackage[final=true,outputdir=out]{minted} % old version
-\RequirePackage{minted}
+\newcommand{\usemintedstyle}[1]{}
+\newcommand{\setminted}[1]{}
+\newcommand{\setmintedinline}[1]{}
 \algrenewcommand{\algorithmicrequire}{\textbf{Input:}}
 \algrenewcommand{\algorithmicensure}{\textbf{Output:}}
 \if@Chinese
